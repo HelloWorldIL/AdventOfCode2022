@@ -6,8 +6,13 @@ def get_elf_food(fd):
         foods.append(int(line))
     return foods
 
-def get_elf_foods():
-    with open('input.txt', 'r') as fd:
+def get_elfs_food(path='input.txt'):
+    """Reads from file and returns a list of of lists where each list is all the food items of an elf.
+
+    Yields:
+        list[list[int]]: List of elf's food itmes (also a list)
+    """
+    with open(path, 'r') as fd:
         while True:
             foods = get_elf_food(fd)
             if foods == []: break
@@ -21,5 +26,5 @@ def get_highest_food(elves):
             highest = _sum
     return highest
 
-foods = get_elf_foods()
+foods = get_elfs_food()
 print(get_highest_food(foods))
